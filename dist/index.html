@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>modeldriven</title>
+	</head>
+	<body>
+
+		<div id="main">
+			<a rv-on-click="setView" data-on-click="list">List</a>
+			<a rv-on-click="setView" data-on-click="detail">Details</a>
+			<a rv-on-click="setView" data-on-click="config">Configuration</a>
+			<div id="list" rv-show="currentView | eq 'list'">
+				<h2>List</h2>
+				<p>Lorem Ipsum</p>
+				<input type="button" value="Add Item" rv-on-click="list.add"/>
+				<h3>Items</h3>
+				<i rv-show="list.items | length | eq 0">There are no items.</i>
+				<ul>
+					<li rv-each-item="list.items"><strong>{item.title}</strong> {item.text}</li>
+				</ul>
+			</div>
+			<div id="detail" rv-show="currentView | eq 'detail'">
+				<h2>Detail</h2>
+				<p>Lorem Ipsum</p>
+				<p>Lorem Ipsum</p>
+				<p>Lorem Ipsum</p>
+			</div>
+			<div id="config" rv-show="currentView | eq 'config'">
+				<h2>Config</h2>
+				<p>Lorem Ipsum</p>
+				<p>Lorem Ipsum</p>
+				<p>Lorem Ipsum</p>
+				<p>Lorem Ipsum</p>
+			</div>
+		</div>
+
+		<script src="bundle.js"></script>
+	</body>
+</html>
