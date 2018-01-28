@@ -9,9 +9,13 @@ var Application = (function(rivets, $, randomstring) {
     var rootId = $('#main');
     var view = undefined;
     var model = {
+        inizialized: true,
         currentView: 'list',
         setView: function(a) {
             setView(a);
+        },
+        disable: function(a, b, c) {
+            disable();
         },
         list: {
             items: [],
@@ -20,6 +24,10 @@ var Application = (function(rivets, $, randomstring) {
             }
         },
         removeClass: 'hide'
+    }
+
+    var disable = function() {
+        model.inizialized = false;
     }
 
     rivets.configure({
@@ -39,8 +47,14 @@ var Application = (function(rivets, $, randomstring) {
         }
     });
 
-    rivets.binders.removeclass = function(el, value) {
-        $(el).removeClass(value);
+    rivets.binders['removeclass-*'] = function(el, value) {
+        var className = this.args[0];
+        if(className) {
+            if(value === true)
+                $(el).removeClass(className);
+            if(value === false)
+                $(el).addClass(className);
+        }
     }
 
     rivets.formatters.eq = function (value, args) {

@@ -7,10 +7,12 @@
 	</head>
 	<body>
 
-		<div id="main" class="hide" rv-removeclass="removeClass">
+		<!--<div id="main" class="hide" rv-removeclass="removeClass">-->
+		<div id="main" class="hide" rv-removeclass-hide="inizialized" rv-removeclass-dummyclass="currentView">
 			<a rv-on-click="setView" data-on-click="list">List</a>
 			<a rv-on-click="setView" data-on-click="detail">Details</a>
 			<a rv-on-click="setView" data-on-click="config">Configuration</a>
+			<input type="button" value="Disable" rv-on-click="disable"/>
 			<div id="list" rv-show="currentView | eq 'list'">
 				<h2>List</h2>
 				<p>Lorem Ipsum</p>
