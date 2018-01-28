@@ -57,6 +57,16 @@ var Application = (function(rivets, $, randomstring) {
         }
     }
 
+    rivets.binders['addclass-*'] = function(el, value) {
+        var className = this.args[0];
+        if(className) {
+            if(value === true)
+                $(el).addClass(className);
+            if(value === false)
+                $(el).removeClass(className);
+        }
+    }
+
     rivets.formatters.eq = function (value, args) {
         return value === args;
     };
