@@ -66,7 +66,6 @@ var Application = (function(rivets, $, randomstring) {
     };
 
     var setView = function(view) {
-        console.log('setView', view)
         model.currentView = view;
     };
 
