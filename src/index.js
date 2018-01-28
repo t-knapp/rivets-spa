@@ -18,7 +18,8 @@ var Application = (function(rivets, $, randomstring) {
             add: function(event, boundModel) {
                 boundModel.model.items.push({title: 'Title', text: randomstring.generate()})
             }
-        }
+        },
+        removeClass: 'hide'
     }
 
     rivets.configure({
@@ -37,6 +38,10 @@ var Application = (function(rivets, $, randomstring) {
             }
         }
     });
+
+    rivets.binders.removeclass = function(el, value) {
+        $(el).removeClass(value);
+    }
 
     rivets.formatters.eq = function (value, args) {
         return value === args;
