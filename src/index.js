@@ -1,11 +1,13 @@
 import styles from './main.css';
 
+import PouchDB from 'pouchdb';
 import rivets from 'rivets';
 import $ from 'jquery';
 import randomstring from 'randomstring';
 
 var Application = (function(rivets, $, randomstring) {
 
+    var pouchDB = new PouchDB('rivets-spa');
     var rootId = $('#main');
     var view = undefined;
     var model = {
@@ -19,8 +21,10 @@ var Application = (function(rivets, $, randomstring) {
         },
         list: {
             items: [],
+            addPossible: true,
             add: function(event, boundModel) {
-                boundModel.model.items.push({title: 'Title', text: randomstring.generate()})
+                //boundModel.model.items.push({title: 'Title', text: randomstring.generate()})
+                addItem();
             }
         },
         removeClass: 'hide'
@@ -28,7 +32,37 @@ var Application = (function(rivets, $, randomstring) {
 
     var disable = function() {
         model.inizialized = false;
-    }
+    };
+
+    var loadItems = function() {
+        pouchDB.allDocs({include_docs: true})
+        .then(allDocs => {
+            var i, length = allDocs.rows.length;
+            for(i = 0; i < length; i++) {
+                model.list.items.push(allDocs.rows[i].doc);
+            }
+        });
+    };
+
+    loadItems();
+
+    var addItem = function() {
+        model.list.addPossible = false;
+        var newItem = {
+            _id: randomstring.generate(),
+            entityType: 'Item',
+            title: 'Title',
+            text: randomstring.generate()
+        };
+        pouchDB.put(newItem)
+        .then(result => {
+            model.list.items.push(newItem);
+            model.list.addPossible = true;
+        }).catch(e => {
+            console.warn('e', e);
+            model.list.addPossible = true;
+        })
+    };
 
     rivets.configure({
         // extracted from: https://github.com/mikeric/rivets/issues/258#issuecomment-52489864

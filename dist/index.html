@@ -21,7 +21,7 @@
 				<div id="list" rv-show="currentView | eq 'list'">
 					<h2>List</h2>
 					<p>Lorem Ipsum</p>
-					<input type="button" value="Add Item" rv-on-click="list.add"/>
+					<input type="button" value="Add Item" rv-on-click="list.add" rv-enabled="list.addPossible"/>
 					<h3>Items</h3>
 					<i rv-show="list.items | length | eq 0">There are no items.</i>
 					<ul>
