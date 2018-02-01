@@ -1,13 +1,13 @@
 import styles from './main.css';
 
-import PouchDB from 'pouchdb';
 import rivets from 'rivets';
 import $ from 'jquery';
 import randomstring from 'randomstring';
 
-var Application = (function(rivets, $, randomstring) {
+import Database from './Database';
 
-    var pouchDB = new PouchDB('rivets-spa');
+var Application = (function(rivets, $, randomstring, Database) {
+
     var rootId = $('#main');
     var view = undefined;
     var model = {
@@ -23,7 +23,6 @@ var Application = (function(rivets, $, randomstring) {
             items: [],
             addPossible: true,
             add: function(event, boundModel) {
-                //boundModel.model.items.push({title: 'Title', text: randomstring.generate()})
                 addItem();
             },
             remove: function(event) {
@@ -39,12 +38,9 @@ var Application = (function(rivets, $, randomstring) {
     };
 
     var loadItems = function() {
-        pouchDB.allDocs({include_docs: true})
-        .then(allDocs => {
-            var i, length = allDocs.rows.length;
-            for(i = 0; i < length; i++) {
-                model.list.items.push(allDocs.rows[i].doc);
-            }
+        Database.getItems()
+        .then(items => {
+            model.list.items = items;
         });
     };
 
@@ -58,7 +54,7 @@ var Application = (function(rivets, $, randomstring) {
             title: 'Title',
             text: randomstring.generate()
         };
-        pouchDB.put(newItem)
+        Database.addItem(newItem)
         .then(result => {
             model.list.items.push(newItem);
             model.list.addPossible = true;
@@ -69,10 +65,7 @@ var Application = (function(rivets, $, randomstring) {
     };
 
     var deleteItem = function(docId) {
-        pouchDB.get(docId)
-        .then(function (doc) {
-            return pouchDB.remove(doc._id, doc._rev);
-        })
+        Database.deleteItem(docId)
         .then(function() {
             removeItemFromModel(docId);
         });
@@ -146,4 +139,4 @@ var Application = (function(rivets, $, randomstring) {
 
     bind();
 
-})(rivets, $, randomstring);
+})(rivets, $, randomstring, Database);
