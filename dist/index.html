@@ -25,7 +25,10 @@
 					<h3>Items</h3>
 					<i rv-show="list.items | length | eq 0">There are no items.</i>
 					<ul>
-						<li rv-each-item="list.items"><strong>{item.title}</strong> {item.text}</li>
+						<li rv-each-item="list.items">
+							<strong>{item.title}</strong> {item.text} 
+							<a rv-on-click="list.remove" rv-data-id="item._id">[X]</a>
+						</li>
 					</ul>
 				</div>
 				<div id="detail" rv-show="currentView | eq 'detail'">
