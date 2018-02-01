@@ -73,16 +73,20 @@ var Application = (function(rivets, $, randomstring) {
         .then(function (doc) {
             return pouchDB.remove(doc._id, doc._rev);
         })
-        .then(function(result) {
-            var i;
-            var found = false;
-            for(i = 0; i < model.list.items.length && !found; i++) {
-                if(model.list.items[i]._id === docId) {
-                    found = true;
-                    model.list.items.splice(i, 1);
-                }
-            }
+        .then(function() {
+            removeItemFromModel(docId);
         });
+    };
+
+    var removeItemFromModel = function(docId) {
+        var i;
+        var found = false;
+        for(i = 0; i < model.list.items.length && !found; i++) {
+            if(model.list.items[i]._id === docId) {
+                found = true;
+                model.list.items.splice(i, 1);
+            }
+        }
     };
 
     rivets.configure({
