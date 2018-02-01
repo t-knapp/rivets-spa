@@ -53,7 +53,8 @@ var Application = (function(rivets, $, Model, ItemList) {
     };
 
     rivets.formatters.length = function(value) {
-        return value.length;
+        if(value)
+            return value.length;
     };
 
     var bindRivets = function() {
