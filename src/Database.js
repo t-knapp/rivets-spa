@@ -31,6 +31,7 @@ var Database = (function(PouchDB) {
 
     init();
 
+    // TODO: Generic API
     return {
         getItems: getItems,
         addItem: addItem,

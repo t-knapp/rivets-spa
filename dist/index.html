@@ -9,11 +9,11 @@
 
 		<div id="main">
 
-			<div class="splashscreen" rv-addclass-hide="inizialized">
+			<div class="splashscreen" rv-addclass-hide="initialized">
 				<pre>Loading</pre>
 			</div>
 
-			<div class="page-wrapper hide" rv-removeclass-hide="inizialized">
+			<div class="page-wrapper hide" rv-removeclass-hide="initialized">
 				<a rv-on-click="setView" data-on-click="list">List</a>
 				<a rv-on-click="setView" data-on-click="detail">Details</a>
 				<a rv-on-click="setView" data-on-click="config">Configuration</a>
@@ -23,7 +23,7 @@
 					<p>Lorem Ipsum</p>
 					<input type="button" value="Add Item" rv-on-click="list.add" rv-enabled="list.addPossible"/>
 					<h3>Items</h3>
-					<i rv-show="list.items | length | eq 0">There are no items.</i>
+					<!-- <i rv-show="list.items | length | eq 0">There are no items.</i> -->
 					<ul>
 						<li rv-each-item="list.items">
 							<strong>{item.title}</strong> {item.text} 
