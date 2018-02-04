@@ -18,11 +18,24 @@
 				<a rv-on-click="setView" data-on-click="detail">Details</a>
 				<a rv-on-click="setView" data-on-click="config">Configuration</a>
 				<input type="button" value="Disable" rv-on-click="disable"/>
+				<!-- Begin List -->
 				<div id="list" rv-show="currentView | eq 'list'">
-					<h2>List</h2>
-					<p>Lorem Ipsum</p>
-					<input type="button" value="Add Item" rv-on-click="list.add" rv-enabled="list.addPossible"/>
-					<h3>Items</h3>
+					<h2>Items</h2>
+					<h3>Add Item</h3>
+					<table>
+						<tr>
+							<td>Title</td>
+							<td><input type="text" name="title"></td>
+						</tr>
+						<tr>
+							<td>Text</td>
+							<td><input type="text" name="text"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="button" value="Add Item" rv-on-click="list.add" rv-enabled="list.addPossible"/></td>
+						</tr>
+					</table>
 					<i rv-show="list.items | length | eq 0">There are no items.</i>
 					<ul>
 						<li rv-each-item="list.items">
@@ -31,12 +44,16 @@
 						</li>
 					</ul>
 				</div>
+				<!-- End List -->
+				<!-- Begin Detail -->
 				<div id="detail" rv-show="currentView | eq 'detail'">
 					<h2>Detail</h2>
 					<p>Lorem Ipsum</p>
 					<p>Lorem Ipsum</p>
 					<p>Lorem Ipsum</p>
 				</div>
+				<!-- End Detail -->
+				<!-- Begin Config -->
 				<div id="config" rv-show="currentView | eq 'config'">
 					<h2>Config</h2>
 					<p>Lorem Ipsum</p>
@@ -44,6 +61,7 @@
 					<p>Lorem Ipsum</p>
 					<p>Lorem Ipsum</p>
 				</div>
+				<!-- End Config -->
 			</div>
 
 		</div>
