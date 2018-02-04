@@ -1,11 +1,13 @@
 import randomstring from 'randomstring';
 
 import $ from 'jquery';
+import moment from 'moment';
 
 import Model from "./Model";
 import Database from "./Database";
+import Forms from './Forms';
 
-var ItemList = (function(Model, Database, randomstring, $){
+var ItemList = (function(Model, Database, randomstring, $, moment, Forms){
 
     var viewRoot = $('#list');
 
@@ -21,47 +23,27 @@ var ItemList = (function(Model, Database, randomstring, $){
         deleteItem(id);
     };
 
-    var getInputValue = function(inputName) {
-        return viewRoot.find("input[name='" + inputName + "']").val();
-    };
-
-    var getTitleValue = function() {
-        return getInputValue('title');
-    };
-
-    var getTextValue = function() {
-        return getInputValue('text');
-    };
-
-    var clearInputValues = function(inputName) {
-        viewRoot.find("input[name]").val('');
-    };
-
-    var isInputValid = function() {
-        var titleValue = getTitleValue();
-        var textValue = getTextValue();
-        return titleValue && textValue && titleValue !== '' && textValue !== '';
-    };
-
     var addItem = function() {
-        if(!isInputValid()) {
+        if(!Forms.isInputValid(viewRoot)) {
             console.log('Input is not valid.');
             return;
         }
         Model.list.addPossible = false;
-        var titleValue = getTitleValue();
-        var textValue = getTextValue();
+        var titleValue = Forms.getTitleValue(viewRoot);
+        var textValue = Forms.getTextValue(viewRoot);
         var newItem = {
             _id: randomstring.generate(),
             entityType: 'Item',
             title: titleValue,
-            text: textValue
+            text: textValue,
+            timeAdded: moment().format('LLLL'),
+            timeModified: null
         };
         Database.addItem(newItem)
         .then(result => {
             Model.list.items.push(newItem);
             Model.list.addPossible = true;
-            clearInputValues();
+            Forms.clearInputValues(viewRoot);
         }).catch(e => {
             console.warn('e', e);
             Model.list.addPossible = true;
@@ -86,16 +68,46 @@ var ItemList = (function(Model, Database, randomstring, $){
         }
     };
 
+    var details = function(event) {
+        var id = event.target.getAttribute('data-id');
+        Model.setView('detail');
+        Model.details.setDetails(id);
+    };
+
+    var updateItem = function(item) {
+        var index = indexOfItem(item._id);
+        if(index !== undefined) {
+            Model.list.items[index]._rev = item._rev;
+            Model.list.items[index].title = item.title;
+            Model.list.items[index].text = item.text;
+            Model.list.items[index].timeModified = item.textimeModified;
+            Model.setView('list');
+        }
+    };
+
+    var indexOfItem = function(docId) {
+        var i, found = false, length = Model.list.items.length, index;
+        for(i = 0; i < length && !found; i++) {
+            if(Model.list.items[i]._id === docId) {
+                found = true;
+                index = i;
+            }
+        }
+        return index;
+    };
+
     Model.list = {
         items: undefined,
         addPossible: true,
         remove: remove,
-        add: addItem
+        add: addItem,
+        details: details,
+        updateItem: updateItem
     }
 
     // Init
     loadItems();
 
-})(Model, Database, randomstring, $);
+})(Model, Database, randomstring, $, moment, Forms);
 
 export default ItemList;

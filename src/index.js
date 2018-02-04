@@ -5,8 +5,9 @@ import $ from 'jquery';
 
 import Model from './Model';
 import ItemList from './ItemList';
+import Details from './Details';
 
-var Application = (function(rivets, $, Model, ItemList) {
+var Application = (function(rivets, $, Model, ItemList, Details) {
 
     var rootId = $('#main');
     var rivetsView = undefined;
@@ -65,4 +66,14 @@ var Application = (function(rivets, $, Model, ItemList) {
 
     bindRivets();
 
-})(rivets, $, Model, ItemList);
+    var sync = function() {
+        rivetsView.sync();
+    };
+
+    return {
+        sync: sync
+    }
+
+})(rivets, $, Model, ItemList, Details);
+
+export default Application;

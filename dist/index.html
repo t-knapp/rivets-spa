@@ -15,7 +15,6 @@
 
 			<div class="page-wrapper hide" rv-removeclass-hide="initialized">
 				<a rv-on-click="setView" data-on-click="list">List</a>
-				<a rv-on-click="setView" data-on-click="detail">Details</a>
 				<a rv-on-click="setView" data-on-click="config">Configuration</a>
 				<input type="button" value="Disable" rv-on-click="disable"/>
 				<!-- Begin List -->
@@ -40,17 +39,29 @@
 					<ul>
 						<li rv-each-item="list.items">
 							<strong>{item.title}</strong> {item.text} 
-							<a rv-on-click="list.remove" rv-data-id="item._id">[X]</a>
+							<a rv-on-click="list.details" rv-data-id="item._id">[Details]</a>
+							<a rv-on-click="list.remove" rv-data-id="item._id">[Delete]</a>
 						</li>
 					</ul>
 				</div>
 				<!-- End List -->
 				<!-- Begin Detail -->
 				<div id="detail" rv-show="currentView | eq 'detail'">
-					<h2>Detail</h2>
-					<p>Lorem Ipsum</p>
-					<p>Lorem Ipsum</p>
-					<p>Lorem Ipsum</p>
+					<h2>ItemDetails</h2>
+					<table>
+						<tr>
+							<td>Title</td>
+							<td><input type="text" name="title" rv-value="details.item.title"></td>
+						</tr>
+						<tr>
+							<td>Text</td>
+							<td><input type="text" name="text" rv-value="details.item.text"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="button" value="Save Item" rv-on-click="details.save"/></td>
+						</tr>
+					</table>
 				</div>
 				<!-- End Detail -->
 				<!-- Begin Config -->

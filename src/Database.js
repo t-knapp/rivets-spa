@@ -18,6 +18,10 @@ var Database = (function(PouchDB) {
         });
     };
 
+    var getItem = function(docId) {
+        return db.get(docId);
+    }
+
     var addItem = function(item) {
         return db.put(item);
     };
@@ -33,6 +37,7 @@ var Database = (function(PouchDB) {
 
     // TODO: Generic API
     return {
+        getItem: getItem,
         getItems: getItems,
         addItem: addItem,
         deleteItem: deleteItem
