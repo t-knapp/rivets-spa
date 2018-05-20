@@ -79,7 +79,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_App_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style/App.css */ \"./src/style/App.css\");\n/* harmony import */ var _style_App_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_App_css__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconsole.log(\"Hallo App\");\n\n//# sourceURL=webpack:///./src/App.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_General_less__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style/General.less */ \"./src/style/General.less\");\n/* harmony import */ var _style_General_less__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_General_less__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _style_App_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style/App.css */ \"./src/style/App.css\");\n/* harmony import */ var _style_App_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_App_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconsole.log(\"Hallo App\");\n\n//# sourceURL=webpack:///./src/App.js?");
 
 /***/ }),
 
@@ -91,6 +91,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/style/App.css?");
+
+/***/ }),
+
+/***/ "./src/style/General.less":
+/*!********************************!*\
+  !*** ./src/style/General.less ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/style/General.less?");
 
 /***/ })
 
