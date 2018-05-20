@@ -75,11 +75,11 @@
 /*!********************!*\
   !*** ./src/App.js ***!
   \********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_General_less__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style/General.less */ \"./src/style/General.less\");\n/* harmony import */ var _style_General_less__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_General_less__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _style_App_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style/App.css */ \"./src/style/App.css\");\n/* harmony import */ var _style_App_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_App_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconsole.log(\"Hallo App\");\n\n//# sourceURL=webpack:///./src/App.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\n__webpack_require__(/*! ./style/General.less */ \"./src/style/General.less\");\n\n__webpack_require__(/*! ./style/App.css */ \"./src/style/App.css\");\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nconsole.log(\"Hallo App\");\n\nsetTimeout(function () {\n    console.log('Delayed Arrow.');\n}, 1000);\n\nvar App = function App() {\n    _classCallCheck(this, App);\n\n    console.log(\"Say Hallo\");\n};\n\nexports.default = App;\n\n\nvar app = new App();\n\n//# sourceURL=webpack:///./src/App.js?");
 
 /***/ }),
 
