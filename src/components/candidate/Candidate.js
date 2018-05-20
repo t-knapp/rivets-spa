@@ -7,5 +7,11 @@ export function revertA(str) {
 }
 
 export function revertB(str) {
-
+    if(!str)
+        return '';
+    let i, length = str.length, value = [];
+    for(i = 0; i < length; i++) {
+        value.unshift(str[i]);
+    }
+    return value.join('');
 }

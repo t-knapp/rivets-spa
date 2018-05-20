@@ -19,5 +19,13 @@ describe("Candidate Tests", () => {
             value.should.have.length(input.length);
             value.should.equal("CBA");
         });
+
+        it("should give the same output", () => {
+            let input = "ABC";
+            let valA = revertA(input);
+            let valB = revertB(input);
+            expect(valA).to.equal(valB);
+        });
+        
     });
 })
