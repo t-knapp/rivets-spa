@@ -1,4 +1,4 @@
-var lang {
+var lang = {
     "_lang": "de",
     "hello": "Hallo"
 }

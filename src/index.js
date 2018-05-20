@@ -3,6 +3,8 @@ import styles from './style/main.css';
 import rivets from 'rivets';
 import $ from 'jquery';
 
+import Internationalization from './i18n/Internationalization';
+
 import Model from './Model';
 import ItemList from './ItemList';
 import Details from './Details';
@@ -64,16 +66,22 @@ var Application = (function(rivets, $, Model, ItemList, Details) {
         }
     };
 
-    bindRivets();
+    //bindRivets();
 
     var sync = function() {
         rivetsView.sync();
     };
 
     return {
-        sync: sync
+        sync: sync,
+        bindRivets: bindRivets
     }
 
 })(rivets, $, Model, ItemList, Details);
 
 export default Application;
+
+const i18n = new Internationalization();
+i18n.load()
+.then(() => { Application.bindRivets(); })
+.catch(() => { console.warn("Error loading language."); });
