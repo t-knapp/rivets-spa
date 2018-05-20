@@ -8,6 +8,7 @@ import Internationalization from './i18n/Internationalization';
 import Model from './Model';
 import ItemList from './ItemList';
 import Details from './Details';
+import SearchInput from './components/searchinput/SearchInput';
 
 var Application = (function(rivets, $, Model, ItemList, Details) {
 
@@ -85,3 +86,6 @@ const i18n = new Internationalization();
 i18n.load()
 .then(() => { Application.bindRivets(); })
 .catch(() => { console.warn("Error loading language."); });
+
+const searchA = new SearchInput('#config .searchInput');
+searchA.bind();

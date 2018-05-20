@@ -1,4 +1,5 @@
 var lang = {
     "_lang": "de",
-    "hello": "Hallo"
+    "hello": "Hallo",
+    "changeText": "Hänsel & Gretel"
 }

@@ -1,6 +1,8 @@
 import $ from "jquery";
 import moment from "moment";
 
+import './style/Details.less';
+
 import Model from "./Model";
 import Database from "./Database";
 import Forms from "./Forms";
