@@ -1,4 +1,4 @@
-import styles from './main.css';
+import styles from './style/main.css';
 
 import rivets from 'rivets';
 import $ from 'jquery';
