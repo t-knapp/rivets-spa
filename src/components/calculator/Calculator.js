@@ -9,3 +9,7 @@ export function square(a) {
 export function mult(a, b) {
     return a * b
 }
+
+export function pow(base, power) {
+    return Math.pow(base, power);
+}
