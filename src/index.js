@@ -2,6 +2,9 @@ import styles from './style/main.css';
 
 import rivets from 'rivets';
 import $ from 'jquery';
+import _ from 'lodash';
+
+import PlatformApp from './platforms/PlatformApp';
 
 import Internationalization from './i18n/Internationalization';
 
@@ -89,3 +92,9 @@ i18n.load()
 
 const searchA = new SearchInput('#config .searchInput');
 searchA.bind();
+
+console.log(_.join(['index', 'modules', 'loaded'], '~'));
+
+console.log('PlatformApp', PlatformApp);
+console.log('PlatformApp.getPath', PlatformApp.getPath());
+PlatformApp.doStuff();

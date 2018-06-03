@@ -9,9 +9,12 @@ module.exports = {
   devServer: {
     contentBase: "./dist"
   },
-  entry: './src/index.js',
+  entry:  { 
+    main: './src/index.js',
+    mobileActivation: './src/MobileActivation.js'
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
